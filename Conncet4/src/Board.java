@@ -27,9 +27,10 @@ public class Board extends Application {
 	
 	private Parent createContent() {
 		root = new Pane();
+		//group for Tiles 
 		tGroup = new Group();
-		bGroup =  new Group();
-		
+		bGroup = new Group();
+		//Display Information for Turn, gets updated after a users turn
 		Text turnp = new Text(WIDTH * (TILE_SIZE + 2), 15, "Turn:");
 		playerColor = new Text(WIDTH * (TILE_SIZE+2) + 30, 15, "RED");
 		playerColor.setFont(Font.font("Impact", FontWeight.BOLD, 12));
@@ -38,12 +39,14 @@ public class Board extends Application {
 		root.getChildren().addAll(tGroup, bGroup, turnp, playerColor);
 		root.setPrefSize(WIDTH * (TILE_SIZE + 2) + TILE_SIZE, HEIGHT * (TILE_SIZE + 2) + 25);
 		Tile t;
+		//creates board, and reverse order for y to make placing pieces easier.
 		for(int x = 0; x < WIDTH; x++) {
 			for(int y = 0; y < HEIGHT; y++){
 				t = new Tile(x * (TILE_SIZE + 2), y * (TILE_SIZE + 2));
 				tGroup.getChildren().add(t);
 				Board[x][5-y] = t;
 			}
+			//Place Piece is where the buttons for placing Pieces are created
 			p = new PlacePiece(x, this);
 			buttons[x] = p;
 			bGroup.getChildren().addAll(p.getBlack(), p.getRed());
@@ -54,7 +57,10 @@ public class Board extends Application {
 		
 		return root;
 		}
-	
+	// function for "dropping" a piece on to the board
+	// when the board was first made it consisted of squares and circles
+	// instead of adding something, it sets the tile to having a piece and 
+	// chances the circle color to the piece color
 	public boolean dropPiece(int turn, int x, int y) {
 		if(this.turn == turn && this.turn == Piece.RED.turn) {
 			if(Board[x][y].getChildren().get(1) instanceof Ellipse) {
@@ -62,6 +68,7 @@ public class Board extends Application {
 				e.setFill(Color.RED);
 				playerColor.setText("BLACK");
 				playerColor.setFill(Color.BLACK);
+				Board[x][y].setPiece(Piece.RED);
 			}
 			this.turn++;
 			return true;
@@ -72,6 +79,7 @@ public class Board extends Application {
 				e.setFill(Color.BLACK);
 				playerColor.setText("RED");
 				playerColor.setFill(Color.RED);
+				Board[x][y].setPiece(Piece.BLACK);
 			}
 			this.turn--;
 			return true;
@@ -87,6 +95,7 @@ public class Board extends Application {
 		stage.show();
 		fixButtons();
 	}
+	// relocating buttons based on button size, cannot be done until buttons can be seen on screen
 	private void fixButtons() {
 		for (int i = 0; i < 7; i++) {
 			buttons[i].setRedX(buttons[i].getRedX() - buttons[i].getRedWidth());

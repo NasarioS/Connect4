@@ -4,19 +4,21 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
 public class Tile extends StackPane {
-	private boolean piece;
+	private Piece piece;
 	private Rectangle r;
 	private Ellipse e;
-	
-	public void setPiece() {
-		this.piece = true;
+	//contains information about a set piece, will be used later to
+	//check if there is 4 in a row
+	public void setPiece(Piece p) {
+		this.piece = p;
 	}
-	public boolean hasPiece() {
-		return this.piece;
+	public Piece getPiece() {
+		return  this.piece;
 	}
-	
+	// A stack containing Squares and Circles the Circles will later visually represent 
+	// red, black and blank pieces, 
 	public Tile(double x, double y) {
-		this.piece = false;
+		this.piece = null;
 		this.setPrefSize(Board.TILE_SIZE,Board.TILE_SIZE);
 		r = new Rectangle();
 		r.setFill(Color.BLUE);

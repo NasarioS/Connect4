@@ -1,5 +1,4 @@
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class PlacePiece{
@@ -10,7 +9,7 @@ public class PlacePiece{
 		row = 0;
 		red = new Button("Red");
 		black = new Button("Black");
-		
+		//setting buttons location, the Y location is fixed later after shown on screen 
 		red.setLayoutX((Board.TILE_SIZE + 2) * y + (Board.TILE_SIZE / 2));
 		black.setLayoutX((Board.TILE_SIZE + 2) * y + (Board.TILE_SIZE / 2));
 		
@@ -33,7 +32,7 @@ public class PlacePiece{
 			}
 		});
 	}
-	
+	//getters and setters for the buttons location and size
 	public void addRow() {
 		row++;
 	}
