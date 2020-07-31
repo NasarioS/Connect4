@@ -1,5 +1,5 @@
 # Connect4
 Connect Four in JavaFX
-TO RUN:
-1) Pull from GitHub
-2) Run Board.java, note:Must have JAVAFX and the JRE on computer with a Java Compiler, I used eclipse for this proejct) 
+
+If you pull the project and then and run Board.java on your machine, you can test the Java applcation, you will need a java compiler, with jre and JavaFX installed. 
+Alteraltively, you can donwload the jar file from my website at http://nasarios.com/portfolio.html, note to run the jar file you will still need Java and Javafx Installed on your machine, also this project was made with Eclipse on Windows 10. 
